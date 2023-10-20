@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://d6l8tm053h7e"]
+[gd_scene load_steps=4 format=3 uid="uid://d6l8tm053h7e"]
 
-[node name="player" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cmo5klah2pbie" path="res://images/player_character/player_placeholder.png" id="1_hs3mo"]
+[ext_resource type="Script" path="res://main/player/player_movement.gd" id="2_130ev"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efmly"]
+radius = 29.0
+height = 92.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("2_130ev")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hs3mo")
+
+[node name="general_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_efmly")
+debug_color = Color(0.494118, 0, 0.113725, 0.862745)
