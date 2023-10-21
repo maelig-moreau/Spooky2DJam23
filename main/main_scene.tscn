@@ -43,7 +43,7 @@ seek = NodePath("../carrying_object1")
 seek_image = ExtResource("6_d86yf")
 
 [node name="carrying_object1" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(311, 553)
+position = Vector2(799, 299)
 custom_texture = ExtResource("6_d86yf")
 
 [node name="terrain" type="Node2D" parent="."]
@@ -88,12 +88,13 @@ position = Vector2(-880, 319)
 position = Vector2(-739, 110)
 
 [node name="platform13" parent="terrain" instance=ExtResource("10_ahbep")]
-position = Vector2(-53, 65)
+position = Vector2(122, -54)
 
 [node name="platform15" parent="terrain" instance=ExtResource("11_pubhj")]
 position = Vector2(-1044, 580)
 
 [node name="player" parent="." instance=ExtResource("10_1vac6")]
+position = Vector2(-62, 182)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 process_callback = 0
