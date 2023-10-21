@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://main/player/player_movement.gd" id="2_130ev"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efmly"]
-radius = 29.0
-height = 92.0
+radius = 47.0
+height = 94.0
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("2_130ev")
