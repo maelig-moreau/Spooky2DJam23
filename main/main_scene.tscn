@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=7 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="1_7vfsk"]
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor16x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
 [ext_resource type="PackedScene" uid="uid://cg80wexc6jmes" path="res://main/terrain/wall4x.tscn" id="4_ijngj"]
+[ext_resource type="Texture2D" uid="uid://dr5uoajvel1b4" path="res://images/SFX/darkness.png" id="5_pmmar"]
+[ext_resource type="PackedScene" uid="uid://beouyewwr8gv3" path="res://main/terrain/street_lamp.tscn" id="6_k3alk"]
 
 [node name="main" type="Node2D"]
 
@@ -27,3 +29,15 @@ position = Vector2(80, 426)
 
 [node name="platform4" parent="." instance=ExtResource("4_ijngj")]
 position = Vector2(325, 432)
+
+[node name="street_lamp" parent="." instance=ExtResource("6_k3alk")]
+position = Vector2(1024, 574)
+darkness = [NodePath("dark1")]
+
+[node name="dark1" type="Sprite2D" parent="street_lamp"]
+position = Vector2(422, -401)
+scale = Vector2(694.75, 791)
+texture = ExtResource("5_pmmar")
+
+[node name="street_lamp2" parent="." instance=ExtResource("6_k3alk")]
+position = Vector2(532, 575)

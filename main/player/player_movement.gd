@@ -51,8 +51,6 @@ func get_input():
 	
 	return input_dir
 	
-	
-	
 func jump(dir):
 	if is_on_floor():
 		jumps = MAX_JUMPS
@@ -75,3 +73,6 @@ func accelerate(direction):
 func add_friction():
 	var horvel = velocity.move_toward(Vector2.ZERO,friction)
 	velocity.x = horvel.x
+
+func lamp_contact(lamp):
+	lamp.lightup()
