@@ -1,20 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=5 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="1_7vfsk"]
-[ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/platform.tscn" id="2_b0ay7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr04d"]
-size = Vector2(176, 557)
+[ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor16x.tscn" id="2_b0ay7"]
+[ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
+[ext_resource type="PackedScene" uid="uid://cg80wexc6jmes" path="res://main/terrain/wall4x.tscn" id="4_ijngj"]
 
 [node name="main" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_7vfsk")]
 position = Vector2(477, 329)
 
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-477, -329)
+anchor_mode = 0
+process_callback = 0
+position_smoothing_enabled = true
+
 [node name="platform" parent="." instance=ExtResource("2_b0ay7")]
+position = Vector2(-34, 576)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="platform2" parent="." instance=ExtResource("3_sb3xk")]
+position = Vector2(716, 308)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(78, 268.5)
-shape = SubResource("RectangleShape2D_dr04d")
+[node name="platform3" parent="." instance=ExtResource("4_ijngj")]
+position = Vector2(80, 426)
+
+[node name="platform4" parent="." instance=ExtResource("4_ijngj")]
+position = Vector2(325, 432)

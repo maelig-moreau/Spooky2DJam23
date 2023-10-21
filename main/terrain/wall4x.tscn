@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg80wexc6jmes"]
+
+[ext_resource type="Texture2D" uid="uid://fbnsjafbln1f" path="res://images/terrain/platform_tile.png" id="1_7rjv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_246xh"]
+size = Vector2(96, 385)
+
+[node name="platform" type="StaticBody2D"]
+
+[node name="platform_shape" type="CollisionShape2D" parent="."]
+position = Vector2(48, -192.5)
+shape = SubResource("RectangleShape2D_246xh")
+debug_color = Color(0, 0.435294, 0.341176, 0.419608)
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+offset_top = -385.0
+offset_right = 96.0
+texture = ExtResource("1_7rjv8")
+stretch_mode = 1
