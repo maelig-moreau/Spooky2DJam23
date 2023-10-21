@@ -73,7 +73,7 @@ func jump(dir):
 		jumps -= 1
 	elif Input.is_action_just_pressed("jump") and is_on_wall_only():
 		velocity.y = -jump_strength_burst
-		velocity.x = -dir.x * move_speed*2
+		velocity.x = -get_which_wall_collided() * move_speed*2
 		ct_remaining = 0
 	else:
 		velocity.y += gravity
@@ -99,6 +99,14 @@ func finds_object(object):
 	if close_to_object == null:
 		close_to_object = object
 
+func get_which_wall_collided():
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		if collision.get_normal().x > 0:
+			return -1
+		elif collision.get_normal().x < 0:
+			return 1
+	return 0
 
 func _on_bouncer_body_entered(body):
 	jumps = MAX_JUMPS
