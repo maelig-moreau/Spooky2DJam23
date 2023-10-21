@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn1pxq64vwik5"]
+
+[ext_resource type="Script" path="res://main/player/carrying_object.gd" id="1_7xpw0"]
+[ext_resource type="Texture2D" uid="uid://cmfctno8xlkhm" path="res://images/other/carrying_placeholder.png" id="2_x7igl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2mn5"]
+radius = 39.0
+
+[node name="carrying_object" type="Node2D"]
+script = ExtResource("1_7xpw0")
+
+[node name="CarryingPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("2_x7igl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_v2mn5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

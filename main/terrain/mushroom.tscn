@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8361wnoqqdye"]
+
+[ext_resource type="Texture2D" uid="uid://c6ch6n0cirhte" path="res://images/terrain/mushroom.png" id="1_0b5sx"]
+[ext_resource type="Script" path="res://main/terrain/mushroom.gd" id="1_cir7t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_246xh"]
+size = Vector2(95, 31)
+
+[node name="bounce" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_cir7t")
+
+[node name="platform_shape" type="CollisionShape2D" parent="."]
+position = Vector2(47.5, 15.5)
+shape = SubResource("RectangleShape2D_246xh")
+one_way_collision = true
+debug_color = Color(0.466667, 0.286275, 0.517647, 0.419608)
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+offset_right = 96.0
+offset_bottom = 96.0
+texture = ExtResource("1_0b5sx")
+stretch_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

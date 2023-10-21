@@ -1,22 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=11 format=3 uid="uid://srjuq638qgi2"]
 
-[ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="1_7vfsk"]
-[ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor16x.tscn" id="2_b0ay7"]
+[ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
 [ext_resource type="PackedScene" uid="uid://cg80wexc6jmes" path="res://main/terrain/wall4x.tscn" id="4_ijngj"]
 [ext_resource type="Texture2D" uid="uid://dr5uoajvel1b4" path="res://images/SFX/darkness.png" id="5_pmmar"]
 [ext_resource type="PackedScene" uid="uid://beouyewwr8gv3" path="res://main/terrain/street_lamp.tscn" id="6_k3alk"]
+[ext_resource type="PackedScene" uid="uid://d2qc8tl7my4k6" path="res://main/NPCs/NPC.tscn" id="7_ftrh6"]
+[ext_resource type="PackedScene" uid="uid://cks7rf3b8i1fc" path="res://main/terrain/floor3x.tscn" id="8_nq8b0"]
+[ext_resource type="PackedScene" uid="uid://bn1pxq64vwik5" path="res://main/player/carrying_object.tscn" id="9_1n1ys"]
+[ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="10_1vac6"]
+[ext_resource type="PackedScene" uid="uid://c8361wnoqqdye" path="res://main/terrain/mushroom.tscn" id="10_ahbep"]
 
 [node name="main" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_7vfsk")]
-position = Vector2(477, 329)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(-477, -329)
-anchor_mode = 0
-process_callback = 0
-position_smoothing_enabled = true
+[node name="dark1" type="Sprite2D" parent="."]
+position = Vector2(2272, 389)
+scale = Vector2(1350.37, 972.5)
+texture = ExtResource("5_pmmar")
 
 [node name="platform" parent="." instance=ExtResource("2_b0ay7")]
 position = Vector2(-34, 576)
@@ -30,14 +30,33 @@ position = Vector2(80, 426)
 [node name="platform4" parent="." instance=ExtResource("4_ijngj")]
 position = Vector2(325, 432)
 
-[node name="street_lamp" parent="." instance=ExtResource("6_k3alk")]
-position = Vector2(1024, 574)
-darkness = [NodePath("dark1")]
-
-[node name="dark1" type="Sprite2D" parent="street_lamp"]
-position = Vector2(422, -401)
-scale = Vector2(694.75, 791)
-texture = ExtResource("5_pmmar")
-
 [node name="street_lamp2" parent="." instance=ExtResource("6_k3alk")]
 position = Vector2(532, 575)
+
+[node name="NPC" parent="." instance=ExtResource("7_ftrh6")]
+position = Vector2(738, 529)
+
+[node name="platform5" parent="." instance=ExtResource("8_nq8b0")]
+position = Vector2(1062, 395)
+
+[node name="street_lamp" parent="." instance=ExtResource("6_k3alk")]
+position = Vector2(1217, 395)
+darkness = [NodePath("../dark1")]
+
+[node name="platform6" parent="." instance=ExtResource("2_b0ay7")]
+position = Vector2(736, 777)
+
+[node name="carrying_object" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(311, 553)
+
+[node name="platform7" parent="." instance=ExtResource("10_ahbep")]
+position = Vector2(913, 267)
+
+[node name="player" parent="." instance=ExtResource("10_1vac6")]
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

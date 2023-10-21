@@ -6,7 +6,13 @@ var jump_strength:float = 0
 @export var friction:float = 50
 @export var acceleration:float = 100
 @export var jump_strength_burst:float = 1500
+@export var coyote_time:int = 30
+var ct_remaining:int = 0
 
+var close_to_lamp = null
+var has_firefly:bool = false
+@onready var firefly = $firefly
+var close_to_object = null
 
 var air_lock:float = 0
 
@@ -14,9 +20,11 @@ var left_input_buffer:bool = false
 var jumps:int = 2
 const MAX_JUMPS = 2
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$firefly/fly.play("wuw")
+	$firefly/buzz.play("bzz")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -54,17 +62,30 @@ func get_input():
 func jump(dir):
 	if is_on_floor():
 		jumps = MAX_JUMPS
+		ct_remaining = coyote_time
+	elif ct_remaining > 0:
+		jumps = MAX_JUMPS
+		ct_remaining -= 1
 	
 	if Input.is_action_just_pressed("jump") and jumps > 0 and not is_on_wall_only():
 		velocity.y = -jump_strength_burst
+		ct_remaining = 0
 		jumps -= 1
 	elif Input.is_action_just_pressed("jump") and is_on_wall_only():
 		velocity.y = -jump_strength_burst
 		velocity.x = -dir.x * move_speed*2
-		print("walljump",velocity.x)
+		ct_remaining = 0
 	else:
 		velocity.y += gravity
 		
+func _input(event):
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("interact"):
+			if close_to_lamp != null and firefly.visible:
+				close_to_lamp.lightup()
+				firefly.visible = false
+			elif close_to_object != null:
+				close_to_object.is_carried = true
 
 func accelerate(direction):
 	var horvel = velocity.move_toward(direction * move_speed,acceleration)
@@ -74,5 +95,12 @@ func add_friction():
 	var horvel = velocity.move_toward(Vector2.ZERO,friction)
 	velocity.x = horvel.x
 
-func lamp_contact(lamp):
-	lamp.lightup()
+func finds_object(object):
+	if close_to_object == null:
+		close_to_object = object
+
+
+func _on_bouncer_body_entered(body):
+	jumps = MAX_JUMPS
+	velocity.y -= 2500
+	body.shrink()

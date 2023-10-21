@@ -1,11 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://d6l8tm053h7e"]
+[gd_scene load_steps=11 format=3 uid="uid://d6l8tm053h7e"]
 
 [ext_resource type="Texture2D" uid="uid://cmo5klah2pbie" path="res://images/player_character/player_placeholder.png" id="1_hs3mo"]
 [ext_resource type="Script" path="res://main/player/player_movement.gd" id="2_130ev"]
+[ext_resource type="Texture2D" uid="uid://crby2tseeu0r0" path="res://images/other/firefly.png" id="3_6t85i"]
+[ext_resource type="Texture2D" uid="uid://br5tqmsqh7swf" path="res://images/other/firefly2.png" id="3_27l0o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efmly"]
 radius = 27.0
 height = 94.0
+
+[sub_resource type="Animation" id="Animation_62g66"]
+resource_name = "wuw"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3.0001, 3.5, 4),
+"transitions": PackedFloat32Array(11.7126, 11.7126, 11.7126, 11.7126, 11.7126, 11.7126, 11.7126, 11.7126, 11.7126),
+"update": 0,
+"values": [Vector2(-65, -74), Vector2(-122, -29), Vector2(-146, -94), Vector2(-128, -128), Vector2(-70, -123), Vector2(-123, -38), Vector2(-111, -62), Vector2(-110, 29), Vector2(-65, -74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0r6qd"]
+_data = {
+"wuw": SubResource("Animation_62g66")
+}
+
+[sub_resource type="Animation" id="Animation_ojip0"]
+resource_name = "bzz"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_6t85i"), ExtResource("3_27l0o")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv227"]
+_data = {
+"bzz": SubResource("Animation_ojip0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i4ka"]
+size = Vector2(66, 7)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("2_130ev")
@@ -16,3 +65,29 @@ texture = ExtResource("1_hs3mo")
 [node name="general_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_efmly")
 debug_color = Color(0.494118, 0, 0.113725, 0.862745)
+
+[node name="firefly" type="Sprite2D" parent="."]
+position = Vector2(-65, -74)
+rotation = 0.785398
+texture = ExtResource("3_6t85i")
+
+[node name="fly" type="AnimationPlayer" parent="firefly"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_0r6qd")
+}
+
+[node name="buzz" type="AnimationPlayer" parent="firefly"]
+libraries = {
+"": SubResource("AnimationLibrary_rv227")
+}
+
+[node name="bouncer" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bouncer"]
+position = Vector2(-1, 45.5)
+shape = SubResource("RectangleShape2D_8i4ka")
+
+[connection signal="body_entered" from="bouncer" to="." method="_on_bouncer_body_entered"]
