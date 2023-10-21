@@ -13,6 +13,7 @@ var close_to_lamp = null
 var has_firefly:bool = false
 @onready var firefly = $firefly
 var close_to_object = null
+var is_carrying:bool = false
 
 var air_lock:float = 0
 
@@ -20,16 +21,27 @@ var left_input_buffer:bool = false
 var jumps:int = 2
 const MAX_JUMPS = 2
 
+@onready var i_sign = $interact_sign
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$firefly/fly.play("wuw")
 	$firefly/buzz.play("bzz")
+	i_sign.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	if close_to_lamp != null and firefly.visible:
+		i_sign.visible = true
+		i_sign.text = "[Action] Dissipate Darkness"
+	elif close_to_object != null and is_carrying == false:
+		i_sign.visible = true
+		i_sign.text = "[Action] Take object"
+	else :
+		i_sign.visible = false
+			
+			
 func _physics_process(delta):
 	var dir = get_input()
 	if dir != Vector2.ZERO:
@@ -86,6 +98,7 @@ func _input(event):
 				firefly.visible = false
 			elif close_to_object != null:
 				close_to_object.is_carried = true
+				is_carrying = true
 
 func accelerate(direction):
 	var horvel = velocity.move_toward(direction * move_speed,acceleration)
@@ -110,5 +123,5 @@ func get_which_wall_collided():
 
 func _on_bouncer_body_entered(body):
 	jumps = MAX_JUMPS
-	velocity.y = -1500
+	velocity.y = -1300
 	body.shrink()

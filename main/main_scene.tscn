@@ -42,10 +42,6 @@ position = Vector2(328, 181)
 seek = NodePath("../carrying_object1")
 seek_image = ExtResource("6_d86yf")
 
-[node name="carrying_object1" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(799, 299)
-custom_texture = ExtResource("6_d86yf")
-
 [node name="terrain" type="Node2D" parent="."]
 
 [node name="platform" parent="terrain" instance=ExtResource("2_b0ay7")]
@@ -55,7 +51,7 @@ position = Vector2(-306, 231)
 position = Vector2(466, 324)
 
 [node name="platform2" parent="terrain" instance=ExtResource("3_sb3xk")]
-position = Vector2(-634, -311)
+position = Vector2(-822, -198)
 
 [node name="platform9" parent="terrain" instance=ExtResource("3_sb3xk")]
 position = Vector2(-637, 313)
@@ -82,16 +78,19 @@ position = Vector2(943, 35)
 position = Vector2(-947, 579)
 
 [node name="platform7" parent="terrain" instance=ExtResource("10_ahbep")]
-position = Vector2(-880, 319)
+position = Vector2(-863, 333)
 
 [node name="platform8" parent="terrain" instance=ExtResource("10_ahbep")]
-position = Vector2(-739, 110)
+position = Vector2(-646, 119)
 
 [node name="platform13" parent="terrain" instance=ExtResource("10_ahbep")]
 position = Vector2(122, -54)
 
 [node name="platform15" parent="terrain" instance=ExtResource("11_pubhj")]
 position = Vector2(-1044, 580)
+
+[node name="platform16" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(-1044, -188)
 
 [node name="player" parent="." instance=ExtResource("10_1vac6")]
 position = Vector2(-62, 182)
@@ -102,3 +101,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="carrying_object1" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(799, 299)
+custom_texture = ExtResource("6_d86yf")

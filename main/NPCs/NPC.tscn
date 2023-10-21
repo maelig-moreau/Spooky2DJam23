@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2qc8tl7my4k6"]
+[gd_scene load_steps=7 format=3 uid="uid://d2qc8tl7my4k6"]
 
 [ext_resource type="Texture2D" uid="uid://cyddh4fnol7rh" path="res://images/NPCs/NPC_placeholder.png" id="1_6m32q"]
 [ext_resource type="Script" path="res://main/NPCs/NPC.gd" id="1_qjbgd"]
 [ext_resource type="Texture2D" uid="uid://bvoh4jexoqasb" path="res://images/NPCs/NPC_bubble.png" id="2_rsklq"]
 [ext_resource type="Texture2D" uid="uid://cmfctno8xlkhm" path="res://images/other/carrying_placeholder.png" id="3_eon80"]
+[ext_resource type="Texture2D" uid="uid://p48ukt0fr3w4" path="res://images/SFX/glow.png" id="5_m056v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7kjmm"]
 size = Vector2(366, 96)
@@ -30,4 +31,10 @@ texture = ExtResource("2_rsklq")
 position = Vector2(1, -3)
 texture = ExtResource("3_eon80")
 
+[node name="Glow" type="Sprite2D" parent="."]
+position = Vector2(-2, -13)
+scale = Vector2(1.79167, 1.79167)
+texture = ExtResource("5_m056v")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

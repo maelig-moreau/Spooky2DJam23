@@ -14,7 +14,6 @@ script = ExtResource("1_cir7t")
 [node name="platform_shape" type="CollisionShape2D" parent="."]
 position = Vector2(47.5, 15.5)
 shape = SubResource("RectangleShape2D_246xh")
-one_way_collision = true
 debug_color = Color(0.466667, 0.286275, 0.517647, 0.419608)
 
 [node name="Sprite2D" type="TextureRect" parent="."]

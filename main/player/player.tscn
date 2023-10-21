@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d6l8tm053h7e"]
+[gd_scene load_steps=12 format=3 uid="uid://d6l8tm053h7e"]
 
 [ext_resource type="Texture2D" uid="uid://cmo5klah2pbie" path="res://images/player_character/player_placeholder.png" id="1_hs3mo"]
 [ext_resource type="Script" path="res://main/player/player_movement.gd" id="2_130ev"]
@@ -56,6 +56,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i4ka"]
 size = Vector2(66, 7)
 
+[sub_resource type="LabelSettings" id="LabelSettings_juhti"]
+font_size = 20
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.803922)
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("2_130ev")
 
@@ -89,5 +95,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bouncer"]
 position = Vector2(-1, 45.5)
 shape = SubResource("RectangleShape2D_8i4ka")
+
+[node name="interact_sign" type="Label" parent="."]
+offset_left = -95.0
+offset_top = -121.0
+offset_right = 95.0
+offset_bottom = -58.0
+text = "Press \"Interact\" key"
+label_settings = SubResource("LabelSettings_juhti")
 
 [connection signal="body_entered" from="bouncer" to="." method="_on_bouncer_body_entered"]
