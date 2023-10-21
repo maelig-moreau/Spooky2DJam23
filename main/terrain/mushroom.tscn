@@ -24,6 +24,6 @@ texture = ExtResource("1_0b5sx")
 stretch_mode = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

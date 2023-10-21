@@ -1,56 +1,97 @@
-[gd_scene load_steps=11 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=13 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
 [ext_resource type="PackedScene" uid="uid://cg80wexc6jmes" path="res://main/terrain/wall4x.tscn" id="4_ijngj"]
 [ext_resource type="Texture2D" uid="uid://dr5uoajvel1b4" path="res://images/SFX/darkness.png" id="5_pmmar"]
+[ext_resource type="Texture2D" uid="uid://o10tu11glx77" path="res://images/NPCs/NPC_quests/quest_object1.png" id="6_d86yf"]
 [ext_resource type="PackedScene" uid="uid://beouyewwr8gv3" path="res://main/terrain/street_lamp.tscn" id="6_k3alk"]
 [ext_resource type="PackedScene" uid="uid://d2qc8tl7my4k6" path="res://main/NPCs/NPC.tscn" id="7_ftrh6"]
 [ext_resource type="PackedScene" uid="uid://cks7rf3b8i1fc" path="res://main/terrain/floor3x.tscn" id="8_nq8b0"]
 [ext_resource type="PackedScene" uid="uid://bn1pxq64vwik5" path="res://main/player/carrying_object.tscn" id="9_1n1ys"]
 [ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="10_1vac6"]
 [ext_resource type="PackedScene" uid="uid://c8361wnoqqdye" path="res://main/terrain/mushroom.tscn" id="10_ahbep"]
+[ext_resource type="PackedScene" uid="uid://c8f05g8fduwin" path="res://main/terrain/wall8x.tscn" id="11_pubhj"]
 
 [node name="main" type="Node2D"]
 
-[node name="dark1" type="Sprite2D" parent="."]
-position = Vector2(2272, 389)
+[node name="dark_zone2" type="Node2D" parent="."]
+
+[node name="dark1" type="Sprite2D" parent="dark_zone2"]
+position = Vector2(58, 1160)
 scale = Vector2(1350.37, 972.5)
 texture = ExtResource("5_pmmar")
 
-[node name="platform" parent="." instance=ExtResource("2_b0ay7")]
-position = Vector2(-34, 576)
+[node name="dark_zone1" type="Node2D" parent="."]
 
-[node name="platform2" parent="." instance=ExtResource("3_sb3xk")]
-position = Vector2(716, 308)
+[node name="dark1" type="Sprite2D" parent="dark_zone1"]
+position = Vector2(1588, 202)
+scale = Vector2(1350.37, 972.5)
+texture = ExtResource("5_pmmar")
 
-[node name="platform3" parent="." instance=ExtResource("4_ijngj")]
-position = Vector2(80, 426)
+[node name="street_lamp1" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
+position = Vector2(797, -59)
+dark_zone = NodePath("../dark_zone1")
 
-[node name="platform4" parent="." instance=ExtResource("4_ijngj")]
-position = Vector2(325, 432)
+[node name="street_lamp2" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
+position = Vector2(-206, 577)
+dark_zone = NodePath("../dark_zone2")
 
-[node name="street_lamp2" parent="." instance=ExtResource("6_k3alk")]
-position = Vector2(532, 575)
+[node name="NPC1" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
+position = Vector2(328, 181)
+seek = NodePath("../carrying_object1")
+seek_image = ExtResource("6_d86yf")
 
-[node name="NPC" parent="." instance=ExtResource("7_ftrh6")]
-position = Vector2(738, 529)
-
-[node name="platform5" parent="." instance=ExtResource("8_nq8b0")]
-position = Vector2(1062, 395)
-
-[node name="street_lamp" parent="." instance=ExtResource("6_k3alk")]
-position = Vector2(1217, 395)
-darkness = [NodePath("../dark1")]
-
-[node name="platform6" parent="." instance=ExtResource("2_b0ay7")]
-position = Vector2(736, 777)
-
-[node name="carrying_object" parent="." instance=ExtResource("9_1n1ys")]
+[node name="carrying_object1" parent="." instance=ExtResource("9_1n1ys")]
 position = Vector2(311, 553)
+custom_texture = ExtResource("6_d86yf")
 
-[node name="platform7" parent="." instance=ExtResource("10_ahbep")]
-position = Vector2(913, 267)
+[node name="terrain" type="Node2D" parent="."]
+
+[node name="platform" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(-306, 231)
+
+[node name="platform10" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(466, 324)
+
+[node name="platform2" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-634, -311)
+
+[node name="platform9" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-637, 313)
+
+[node name="platform3" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(-403, 231)
+
+[node name="platform4" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(-191, -15)
+
+[node name="platform14" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(-178, 964)
+
+[node name="platform11" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(1235, 421)
+
+[node name="platform5" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(651, -59)
+
+[node name="platform12" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(943, 35)
+
+[node name="platform6" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(-947, 579)
+
+[node name="platform7" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-880, 319)
+
+[node name="platform8" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-739, 110)
+
+[node name="platform13" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-53, 65)
+
+[node name="platform15" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(-1044, 580)
 
 [node name="player" parent="." instance=ExtResource("10_1vac6")]
 

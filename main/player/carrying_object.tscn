@@ -9,7 +9,7 @@ radius = 39.0
 [node name="carrying_object" type="Node2D"]
 script = ExtResource("1_7xpw0")
 
-[node name="CarryingPlaceholder" type="Sprite2D" parent="."]
+[node name="image" type="Sprite2D" parent="."]
 position = Vector2(2, 0)
 texture = ExtResource("2_x7igl")
 

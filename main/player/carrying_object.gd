@@ -1,10 +1,11 @@
 extends Node2D
 @onready var player = $"../player"
+@export var custom_texture:Texture2D
 var is_carried:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(player)
+	$image.texture = custom_texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

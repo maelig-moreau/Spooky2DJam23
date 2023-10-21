@@ -1,6 +1,7 @@
 extends Node2D
 @onready var player = $"../player"
-@export var darkness:Array
+@export var dark_zone:Node
+var is_lit:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -11,11 +12,13 @@ func _process(delta):
 	pass
 
 func lightup():
-	for i in darkness.size():
-		get_node(darkness[i]).visible = false
+	is_lit = true
+	var children = dark_zone.get_children()
+	for i in children.size():
+		children[i].visible = false
 
 func _on_area_2d_body_entered(body):
-	if body == player:
+	if body == player and is_lit == false:
 		player.close_to_lamp = self
 
 

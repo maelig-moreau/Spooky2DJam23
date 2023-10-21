@@ -1,11 +1,11 @@
 extends CharacterBody2D
 @export var move_speed:int = 600
 @export var jump_speed:int = 50
-@export var gravity:float = 100
+@export var gravity:float = 75
 var jump_strength:float = 0
 @export var friction:float = 50
 @export var acceleration:float = 100
-@export var jump_strength_burst:float = 1500
+@export var jump_strength_burst:float = 1300
 @export var coyote_time:int = 30
 var ct_remaining:int = 0
 
@@ -110,5 +110,5 @@ func get_which_wall_collided():
 
 func _on_bouncer_body_entered(body):
 	jumps = MAX_JUMPS
-	velocity.y -= 2500
+	velocity.y = -1500
 	body.shrink()
