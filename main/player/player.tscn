@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d6l8tm053h7e"]
+[gd_scene load_steps=13 format=3 uid="uid://d6l8tm053h7e"]
 
 [ext_resource type="Texture2D" uid="uid://cmo5klah2pbie" path="res://images/player_character/player_placeholder.png" id="1_hs3mo"]
 [ext_resource type="Script" path="res://main/player/player_movement.gd" id="2_130ev"]
 [ext_resource type="Texture2D" uid="uid://crby2tseeu0r0" path="res://images/other/firefly.png" id="3_6t85i"]
 [ext_resource type="Texture2D" uid="uid://br5tqmsqh7swf" path="res://images/other/firefly2.png" id="3_27l0o"]
+[ext_resource type="Texture2D" uid="uid://p48ukt0fr3w4" path="res://images/SFX/glow.png" id="5_e8o6f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efmly"]
 radius = 27.0
@@ -87,6 +88,12 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_rv227")
 }
+
+[node name="Glow" type="PointLight2D" parent="firefly"]
+position = Vector2(-2, -13)
+scale = Vector2(1.79167, 1.79167)
+texture = ExtResource("5_e8o6f")
+texture_scale = 1.5
 
 [node name="bouncer" type="Area2D" parent="."]
 collision_layer = 2

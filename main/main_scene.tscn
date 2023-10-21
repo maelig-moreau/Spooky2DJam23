@@ -1,51 +1,66 @@
-[gd_scene load_steps=13 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=24 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
 [ext_resource type="PackedScene" uid="uid://cg80wexc6jmes" path="res://main/terrain/wall4x.tscn" id="4_ijngj"]
 [ext_resource type="Texture2D" uid="uid://dr5uoajvel1b4" path="res://images/SFX/darkness.png" id="5_pmmar"]
+[ext_resource type="Texture2D" uid="uid://dgbdxsxsd3vnf" path="res://images/NPCs/NPC_quests/quest_object2.png" id="5_ywk4s"]
 [ext_resource type="Texture2D" uid="uid://o10tu11glx77" path="res://images/NPCs/NPC_quests/quest_object1.png" id="6_d86yf"]
 [ext_resource type="PackedScene" uid="uid://beouyewwr8gv3" path="res://main/terrain/street_lamp.tscn" id="6_k3alk"]
+[ext_resource type="Texture2D" uid="uid://b7uylrtvpbeiq" path="res://images/NPCs/NPC_quests/quest_object3.png" id="6_ym1af"]
 [ext_resource type="PackedScene" uid="uid://d2qc8tl7my4k6" path="res://main/NPCs/NPC.tscn" id="7_ftrh6"]
 [ext_resource type="PackedScene" uid="uid://cks7rf3b8i1fc" path="res://main/terrain/floor3x.tscn" id="8_nq8b0"]
 [ext_resource type="PackedScene" uid="uid://bn1pxq64vwik5" path="res://main/player/carrying_object.tscn" id="9_1n1ys"]
 [ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="10_1vac6"]
 [ext_resource type="PackedScene" uid="uid://c8361wnoqqdye" path="res://main/terrain/mushroom.tscn" id="10_ahbep"]
 [ext_resource type="PackedScene" uid="uid://c8f05g8fduwin" path="res://main/terrain/wall8x.tscn" id="11_pubhj"]
+[ext_resource type="PackedScene" uid="uid://nlm24qarr6pq" path="res://main/terrain/floor16x.tscn" id="13_b48pv"]
+[ext_resource type="Texture2D" uid="uid://ff2f2xsf37ii" path="res://images/NPCs/NPC_quests/quest_object4.png" id="13_f2iof"]
+[ext_resource type="Texture2D" uid="uid://c1ls3lrgfsn2i" path="res://images/other/stone_potion.png" id="13_wd4sv"]
+[ext_resource type="Texture2D" uid="uid://bc2lw05ivuuih" path="res://images/other/bg.png" id="14_rwn6v"]
+[ext_resource type="Shader" path="res://images/SFX/shadow.gdshader" id="18_dnukm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_la47b"]
+shader = ExtResource("18_dnukm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e1w5l"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qfqt3"]
+bump_strength = 2.9
+noise = SubResource("FastNoiseLite_e1w5l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bgh3"]
+shader = ExtResource("18_dnukm")
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_qfqt3")
 
 [node name="main" type="Node2D"]
-
-[node name="dark_zone2" type="Node2D" parent="."]
-
-[node name="dark1" type="Sprite2D" parent="dark_zone2"]
-position = Vector2(58, 1160)
-scale = Vector2(1350.37, 972.5)
-texture = ExtResource("5_pmmar")
-
-[node name="dark_zone1" type="Node2D" parent="."]
-
-[node name="dark1" type="Sprite2D" parent="dark_zone1"]
-position = Vector2(1588, 202)
-scale = Vector2(1350.37, 972.5)
-texture = ExtResource("5_pmmar")
-
-[node name="street_lamp1" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
-position = Vector2(797, -59)
-dark_zone = NodePath("../dark_zone1")
-
-[node name="street_lamp2" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
-position = Vector2(-206, 577)
-dark_zone = NodePath("../dark_zone2")
-
-[node name="NPC1" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
-position = Vector2(328, 181)
-seek = NodePath("../carrying_object1")
-seek_image = ExtResource("6_d86yf")
 
 [node name="terrain" type="Node2D" parent="."]
 
 [node name="platform" parent="terrain" instance=ExtResource("2_b0ay7")]
 position = Vector2(-306, 231)
+
+[node name="platform66" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(-2231, 501)
+
+[node name="platform80" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(-2546, 1516)
+
+[node name="platform18" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(-2213, -679)
+
+[node name="platform30" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(914, -884)
+
+[node name="platform31" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(915, -1773)
+
+[node name="platform33" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(2254, -622)
+
+[node name="platform44" parent="terrain" instance=ExtResource("2_b0ay7")]
+position = Vector2(2772, 559)
 
 [node name="platform10" parent="terrain" instance=ExtResource("2_b0ay7")]
 position = Vector2(466, 324)
@@ -53,14 +68,56 @@ position = Vector2(466, 324)
 [node name="platform2" parent="terrain" instance=ExtResource("3_sb3xk")]
 position = Vector2(-822, -198)
 
+[node name="platform61" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-585, 1310)
+
+[node name="platform72" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(866, 960)
+
+[node name="platform75" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(1361, 635)
+
+[node name="platform77" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(2017, 530)
+
+[node name="platform62" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-933, 1160)
+
+[node name="platform63" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-2376, 1358)
+
+[node name="platform68" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-1708, 870)
+
+[node name="platform85" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-1708, 870)
+
 [node name="platform9" parent="terrain" instance=ExtResource("3_sb3xk")]
 position = Vector2(-637, 313)
+
+[node name="platform65" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(348, -249)
+
+[node name="platform60" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-1043, 579)
 
 [node name="platform3" parent="terrain" instance=ExtResource("4_ijngj")]
 position = Vector2(-403, 231)
 
+[node name="platform86" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(-2177, 1159)
+
 [node name="platform4" parent="terrain" instance=ExtResource("4_ijngj")]
 position = Vector2(-191, -15)
+
+[node name="platform38" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(2926, -622)
+
+[node name="platform40" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(2978, -1167)
+
+[node name="platform83" parent="terrain" instance=ExtResource("4_ijngj")]
+position = Vector2(2574, -1851)
 
 [node name="platform14" parent="terrain" instance=ExtResource("4_ijngj")]
 position = Vector2(-178, 964)
@@ -71,8 +128,32 @@ position = Vector2(1235, 421)
 [node name="platform5" parent="terrain" instance=ExtResource("8_nq8b0")]
 position = Vector2(651, -59)
 
+[node name="platform76" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(353, 1168)
+
+[node name="platform64" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(-467, 910)
+
+[node name="platform39" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(1683, -884)
+
+[node name="platform17" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(160, -575)
+
+[node name="platform25" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(-1153, -1496)
+
+[node name="platform19" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(-1335, -959)
+
 [node name="platform12" parent="terrain" instance=ExtResource("8_nq8b0")]
 position = Vector2(943, 35)
+
+[node name="platform57" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(3317, -429)
+
+[node name="platform58" parent="terrain" instance=ExtResource("8_nq8b0")]
+position = Vector2(3493, -221)
 
 [node name="platform6" parent="terrain" instance=ExtResource("2_b0ay7")]
 position = Vector2(-947, 579)
@@ -83,25 +164,271 @@ position = Vector2(-863, 333)
 [node name="platform8" parent="terrain" instance=ExtResource("10_ahbep")]
 position = Vector2(-646, 119)
 
+[node name="platform20" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-487, -740)
+
+[node name="platform53" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-1281, 116)
+
+[node name="platform67" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-1234, 721)
+
+[node name="platform26" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-1616, -1274)
+
+[node name="platform21" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(-486, -1407)
+
+[node name="platform29" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(1151, -1092)
+
+[node name="platform84" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(1967, -1891)
+
+[node name="platform45" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(1521, 28)
+
+[node name="platform46" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(1842, 136)
+
+[node name="platform47" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(2058, -194)
+
+[node name="platform55" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(2998, 69)
+
+[node name="platform73" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(1612, 1146)
+
+[node name="platform78" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(466, 751)
+
+[node name="platform74" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(2306, 963)
+
+[node name="platform56" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(3314, 80)
+
+[node name="platform36" parent="terrain" instance=ExtResource("10_ahbep")]
+position = Vector2(3121, -1008)
+
 [node name="platform13" parent="terrain" instance=ExtResource("10_ahbep")]
 position = Vector2(122, -54)
 
 [node name="platform15" parent="terrain" instance=ExtResource("11_pubhj")]
 position = Vector2(-1044, 580)
 
+[node name="platform70" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(-2541, 499)
+
+[node name="platform81" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(-2555, 1349)
+
+[node name="platform71" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(-2585, -342)
+
 [node name="platform16" parent="terrain" instance=ExtResource("11_pubhj")]
 position = Vector2(-1044, -188)
 
+[node name="platform34" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(3219, -910)
+
+[node name="platform49" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(3219, -140)
+
+[node name="platform50" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(3546, 644)
+
+[node name="platform79" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(2821, 1466)
+
+[node name="platform51" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(2776, 421)
+
+[node name="platform23" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(-2330, -1161)
+
+[node name="platform22" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(449, -575)
+
+[node name="platform42" parent="terrain" instance=ExtResource("11_pubhj")]
+position = Vector2(3219, -1679)
+
+[node name="platform24" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(188, -1255)
+
+[node name="platform28" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(722, -1079)
+
+[node name="platform48" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(1725, -495)
+
+[node name="platform54" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(2872, -204)
+
+[node name="platform59" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(3636, -358)
+
+[node name="platform52" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-1472, -300)
+
+[node name="platform69" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(-2206, -122)
+
+[node name="platform27" parent="terrain" instance=ExtResource("13_b48pv")]
+position = Vector2(-241, 1517)
+
+[node name="platform37" parent="terrain" instance=ExtResource("13_b48pv")]
+position = Vector2(-1778, 1516)
+
+[node name="platform35" parent="terrain" instance=ExtResource("13_b48pv")]
+position = Vector2(1295, 1517)
+
+[node name="platform32" parent="terrain" instance=ExtResource("13_b48pv")]
+position = Vector2(1335, 325)
+
+[node name="platform41" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(3022, -1006)
+
+[node name="platform43" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(2915, -1806)
+
+[node name="platform82" parent="terrain" instance=ExtResource("3_sb3xk")]
+position = Vector2(2256, -2061)
+
+[node name="NPC1" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
+position = Vector2(328, 181)
+seek = NodePath("../quest_object1")
+seek_image = ExtResource("6_d86yf")
+
+[node name="NPC2" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
+position = Vector2(1284, -9)
+seek = NodePath("../quest_object2")
+seek_image = ExtResource("5_ywk4s")
+
+[node name="NPC3" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
+position = Vector2(-1142, -1005)
+seek = NodePath("../quest_object3")
+seek_image = ExtResource("6_ym1af")
+
+[node name="NPC4" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
+position = Vector2(-324, 864)
+seek = NodePath("../quest_object4")
+seek_image = ExtResource("13_f2iof")
+
 [node name="player" parent="." instance=ExtResource("10_1vac6")]
-position = Vector2(-62, 182)
+position = Vector2(39, 151)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(0.7, 0.7)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="carrying_object1" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(799, 299)
+[node name="quest_object1" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(394, -315)
 custom_texture = ExtResource("6_d86yf")
+
+[node name="quest_object2" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(3542, -267)
+custom_texture = ExtResource("5_ywk4s")
+
+[node name="quest_object3" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(-2158, -172)
+custom_texture = ExtResource("6_ym1af")
+
+[node name="quest_object4" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(2302, -2113)
+custom_texture = ExtResource("13_f2iof")
+
+[node name="street_lamp1" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
+position = Vector2(797, -59)
+dark_zone = NodePath("../dark_zone1")
+shared_dark = Array[NodePath]([NodePath("../shared_dark_1")])
+
+[node name="street_lamp2" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
+position = Vector2(294, -568)
+dark_zone = NodePath("../dark_zone2")
+shared_dark = Array[NodePath]([NodePath("../shared_dark_1"), NodePath("../shared_dark2")])
+
+[node name="street_lamp3" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
+position = Vector2(-345, 571)
+dark_zone = NodePath("../dark_zone3")
+shared_dark = Array[NodePath]([NodePath("../shared_dark2")])
+
+[node name="stone_pot1" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(657, 236)
+custom_texture = ExtResource("13_wd4sv")
+is_potion = true
+
+[node name="stone_pot2" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(916, 885)
+custom_texture = ExtResource("13_wd4sv")
+is_potion = true
+
+[node name="stone_pot3" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(1770, -568)
+custom_texture = ExtResource("13_wd4sv")
+is_potion = true
+
+[node name="stone_pot4" parent="." instance=ExtResource("9_1n1ys")]
+position = Vector2(-998, -1567)
+custom_texture = ExtResource("13_wd4sv")
+is_potion = true
+
+[node name="shared_dark_1" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_la47b")
+position = Vector2(2604.55, -1595.56)
+texture = ExtResource("5_pmmar")
+
+[node name="shared_dark2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_la47b")
+position = Vector2(-2208, 724.344)
+texture = ExtResource("5_pmmar")
+
+[node name="shared_dark3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_la47b")
+position = Vector2(3434, 181)
+scale = Vector2(1.43359, 2.35547)
+texture = ExtResource("5_pmmar")
+
+[node name="dark_zone3" type="Node2D" parent="."]
+
+[node name="dark1" type="Sprite2D" parent="dark_zone3"]
+texture_repeat = 2
+position = Vector2(185, 919)
+scale = Vector2(1.09375, 2.3125)
+texture = ExtResource("5_pmmar")
+
+[node name="dark2" type="Sprite2D" parent="dark_zone3"]
+position = Vector2(1641.5, 948.5)
+scale = Vector2(4.58789, 2.20898)
+texture = ExtResource("5_pmmar")
+
+[node name="dark_zone2" type="Node2D" parent="."]
+
+[node name="dark1" type="Sprite2D" parent="dark_zone2"]
+position = Vector2(-1686.5, -1580.87)
+texture = ExtResource("5_pmmar")
+
+[node name="dark3" type="Sprite2D" parent="dark_zone2"]
+position = Vector2(356, -1683.5)
+texture = ExtResource("5_pmmar")
+
+[node name="dark_zone1" type="Node2D" parent="."]
+
+[node name="dark1" type="Sprite2D" parent="dark_zone1"]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1bgh3")
+position = Vector2(1991, -230.5)
+scale = Vector2(4.19531, 2.39648)
+texture = ExtResource("5_pmmar")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("14_rwn6v")
+centered = false

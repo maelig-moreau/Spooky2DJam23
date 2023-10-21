@@ -14,6 +14,7 @@ var has_firefly:bool = false
 @onready var firefly = $firefly
 var close_to_object = null
 var is_carrying:bool = false
+var can_petrify = null
 
 var air_lock:float = 0
 
@@ -29,15 +30,21 @@ func _ready():
 	$firefly/fly.play("wuw")
 	$firefly/buzz.play("bzz")
 	i_sign.visible = false
+	firefly.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(is_carrying , can_petrify)
 	if close_to_lamp != null and firefly.visible:
 		i_sign.visible = true
 		i_sign.text = "[Action] Dissipate Darkness"
 	elif close_to_object != null and is_carrying == false:
 		i_sign.visible = true
 		i_sign.text = "[Action] Take object"
+	elif is_carrying and can_petrify != null:
+		if can_petrify.happy == false:
+			i_sign.visible = true
+			i_sign.text = "[Action] Petrify"
 	else :
 		i_sign.visible = false
 			
@@ -96,9 +103,18 @@ func _input(event):
 			if close_to_lamp != null and firefly.visible:
 				close_to_lamp.lightup()
 				firefly.visible = false
-			elif close_to_object != null:
+			elif close_to_object != null and is_carrying == false:
 				close_to_object.is_carried = true
 				is_carrying = true
+			elif is_carrying and can_petrify != null:
+				if can_petrify.happy == false:
+					can_petrify.petrify()
+					close_to_object.queue_free()
+					is_carrying = false
+			elif is_carrying:
+				close_to_object.is_carried = false
+				is_carrying = false
+				close_to_object = null
 
 func accelerate(direction):
 	var horvel = velocity.move_toward(direction * move_speed,acceleration)
@@ -109,7 +125,7 @@ func add_friction():
 	velocity.x = horvel.x
 
 func finds_object(object):
-	if close_to_object == null:
+	if close_to_object == null and is_carrying == false:
 		close_to_object = object
 
 func get_which_wall_collided():
