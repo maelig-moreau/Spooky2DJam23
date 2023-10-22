@@ -28,7 +28,7 @@ position = Vector2(85, -81)
 texture = ExtResource("2_rsklq")
 
 [node name="seek_texture" type="Sprite2D" parent="NpcBubble"]
-position = Vector2(-5, -1)
+position = Vector2(0, 1)
 scale = Vector2(0.708333, 0.739583)
 texture = ExtResource("3_eon80")
 

@@ -12,6 +12,7 @@ var petrified:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Quest.advance()
 	$NpcBubble/seek_texture.texture = seek_image
 	$Glow.visible = false
 	if sad_mode != null:

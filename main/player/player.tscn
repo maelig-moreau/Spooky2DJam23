@@ -96,7 +96,7 @@ script = ExtResource("2_130ev")
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_pjolr")
 animation = &"run"
-frame_progress = 0.435518
+frame_progress = 0.803511
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 

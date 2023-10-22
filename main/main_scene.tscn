@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=31 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
@@ -15,9 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://d2qc8tl7my4k6" path="res://main/NPCs/NPC.tscn" id="7_ftrh6"]
 [ext_resource type="PackedScene" uid="uid://cks7rf3b8i1fc" path="res://main/terrain/floor3x.tscn" id="8_nq8b0"]
 [ext_resource type="PackedScene" uid="uid://bn1pxq64vwik5" path="res://main/player/carrying_object.tscn" id="9_1n1ys"]
+[ext_resource type="Texture2D" uid="uid://dlvx8ygcjxhhw" path="res://images/NPCs/character_bunny_idle_01.png" id="9_4wac8"]
+[ext_resource type="Texture2D" uid="uid://dxv7qc13888eu" path="res://images/NPCs/character_bunny_idle_02.png" id="9_wghun"]
 [ext_resource type="PackedScene" uid="uid://d6l8tm053h7e" path="res://main/player/player.tscn" id="10_1vac6"]
 [ext_resource type="PackedScene" uid="uid://c8361wnoqqdye" path="res://main/terrain/mushroom.tscn" id="10_ahbep"]
+[ext_resource type="Texture2D" uid="uid://bc6pdeof3owvv" path="res://images/NPCs/character_boar_idle_02.png" id="11_3njnu"]
 [ext_resource type="PackedScene" uid="uid://c8f05g8fduwin" path="res://main/terrain/wall8x.tscn" id="11_pubhj"]
+[ext_resource type="Texture2D" uid="uid://4in1ee6douh3" path="res://images/NPCs/character_boar_idle_01.png" id="12_f413w"]
 [ext_resource type="PackedScene" uid="uid://nlm24qarr6pq" path="res://main/terrain/floor16x.tscn" id="13_b48pv"]
 [ext_resource type="Texture2D" uid="uid://ff2f2xsf37ii" path="res://images/NPCs/NPC_quests/quest_object4.png" id="13_f2iof"]
 [ext_resource type="Texture2D" uid="uid://c1ls3lrgfsn2i" path="res://images/other/stone_potion.png" id="13_wd4sv"]
@@ -30,7 +34,7 @@
 [node name="main" type="Node2D"]
 
 [node name="NPC1" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
-position = Vector2(328, 181)
+position = Vector2(303, 183)
 seek = NodePath("../quest_object1")
 seek_image = ExtResource("6_d86yf")
 sad_mode = ExtResource("3_wjdgv")
@@ -47,11 +51,15 @@ happy_mode = ExtResource("7_4euel")
 position = Vector2(-1142, -1005)
 seek = NodePath("../quest_object3")
 seek_image = ExtResource("6_ym1af")
+sad_mode = ExtResource("9_wghun")
+happy_mode = ExtResource("9_4wac8")
 
 [node name="NPC4" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
 position = Vector2(-324, 864)
 seek = NodePath("../quest_object4")
 seek_image = ExtResource("13_f2iof")
+sad_mode = ExtResource("11_3njnu")
+happy_mode = ExtResource("12_f413w")
 
 [node name="player" parent="." instance=ExtResource("10_1vac6")]
 position = Vector2(39, 151)
