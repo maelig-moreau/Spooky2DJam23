@@ -15,6 +15,10 @@ run/main_scene="res://main/main_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Quest="*res://main/main_quest.gd"
+
 [input]
 
 right={

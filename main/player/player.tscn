@@ -96,7 +96,7 @@ script = ExtResource("2_130ev")
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_pjolr")
 animation = &"run"
-frame_progress = 0.672275
+frame_progress = 0.529249
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 
@@ -106,7 +106,7 @@ debug_color = Color(0.494118, 0, 0.113725, 0.862745)
 
 [node name="firefly" type="Sprite2D" parent="."]
 position = Vector2(-65, -74)
-rotation = 0.785398
+rotation = -0.839822
 texture = ExtResource("3_6t85i")
 
 [node name="fly" type="AnimationPlayer" parent="firefly"]
@@ -144,11 +144,14 @@ label_settings = SubResource("LabelSettings_juhti")
 
 [node name="jump_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tb70f")
+bus = &"SFX"
 
 [node name="run_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_x0nds")
+bus = &"SFX"
 
 [node name="petrify_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_pvw83")
+bus = &"SFX"
 
 [connection signal="body_entered" from="bouncer" to="." method="_on_bouncer_body_entered"]

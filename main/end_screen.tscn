@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://4gqaqnaxyeq4"]
+
+[ext_resource type="Script" path="res://main/end_screen.gd" id="1_cp8v8"]
+[ext_resource type="Texture2D" uid="uid://bc2lw05ivuuih" path="res://images/other/bg.png" id="2_ghf5p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jekgq"]
+font_size = 30
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.709804)
+
+[node name="end_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cp8v8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ghf5p")
+
+[node name="label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[UNEXPECTED ERROR]"
+label_settings = SubResource("LabelSettings_jekgq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+text = "Character design / character art  : 
+- Jade Perdrilla
+Environement art:
+- Alice Paut
+Level Design / Programming / Music and Sound :
+- Maëlig Moreau"

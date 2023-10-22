@@ -11,6 +11,7 @@ var petrified:bool = false
 func _ready():
 	$NpcBubble/seek_texture.texture = seek_image
 	$Glow.visible = false
+	#Quest.advance()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,27 +26,34 @@ func _on_area_2d_area_entered(area):
 		player.is_carrying = false
 		happy = true
 		if player.firefly.visible == false:
-			player.firefly.visible = true
-			has_firefly = false
+			give_firefly()
+			Quest.score += 100
 		else:
 			$Glow.visible = true
 	elif area.get_parent().is_potion:
 		player.can_petrify = self
 
+func give_firefly():
+	player.firefly.visible = true
+	has_firefly = false
+	Quest.advance()
 
 func _on_area_2d_body_entered(body):
 	if body == player and (happy or petrified) and player.firefly.visible == false and has_firefly:
-		player.firefly.visible = true
-		has_firefly = false
+		give_firefly()
+		if happy:
+			Quest.score += 100
+		elif  petrified:
+			Quest.score -= 100
 		$Glow.visible = false
+		
 
 func petrify():
 	petrified = true
 	$NpcBubble.visible = false
 	$sprite.texture = stone_texture
 	if player.firefly.visible == false:
-		player.firefly.visible = true
-		has_firefly = false
+		give_firefly()
 	else:
 		$Glow.visible = true
 

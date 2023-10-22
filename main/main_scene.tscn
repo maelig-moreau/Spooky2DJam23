@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=23 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
@@ -20,14 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://bc2lw05ivuuih" path="res://images/other/bg.png" id="14_rwn6v"]
 [ext_resource type="Texture2D" uid="uid://bxt37cbp35e2i" path="res://images/SFX/darkness_edge.png" id="18_q5n0l"]
 [ext_resource type="AudioStream" uid="uid://cwyuqsyrd7yle" path="res://Spooky2D Jam23.mp3" id="20_p7lc0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_3v6vn"]
-line_spacing = 6.0
-font_size = 18
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://dtqxa5k22ae5n" path="res://images/terrain/street_lamp_lit.png" id="21_iwhfc"]
+[ext_resource type="PackedScene" uid="uid://cicy0ykf78bnq" path="res://images/SFX/glow.tscn" id="22_fagth"]
 
 [node name="main" type="Node2D"]
 
@@ -37,7 +31,7 @@ seek = NodePath("../quest_object1")
 seek_image = ExtResource("6_d86yf")
 
 [node name="NPC2" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
-position = Vector2(1284, -9)
+position = Vector2(1116, -13)
 seek = NodePath("../quest_object2")
 seek_image = ExtResource("5_ywk4s")
 
@@ -119,6 +113,7 @@ custom_texture = ExtResource("13_wd4sv")
 is_potion = true
 
 [node name="shared_dark_1" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(2463.5, -1710.5)
 scale = Vector2(14.9883, 7.23047)
 texture = ExtResource("5_pmmar")
@@ -131,6 +126,7 @@ skew = -1.00136e-05
 texture = ExtResource("18_q5n0l")
 
 [node name="shared_dark2" type="Sprite2D" parent="."]
+z_index = 1
 texture_filter = 2
 position = Vector2(-2262, 1162.5)
 scale = Vector2(9.51563, 14.0664)
@@ -144,6 +140,7 @@ scale = Vector2(0.112479, 0.631769)
 texture = ExtResource("5_pmmar")
 
 [node name="shared_dark3" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(3589, 29)
 scale = Vector2(6.19531, 4.875)
 texture = ExtResource("5_pmmar")
@@ -154,6 +151,7 @@ scale = Vector2(0.983607, 0.215545)
 texture = ExtResource("5_pmmar")
 
 [node name="dark_zone3" type="Node2D" parent="."]
+z_index = 1
 
 [node name="dark1" type="Sprite2D" parent="dark_zone3"]
 texture_filter = 2
@@ -184,6 +182,7 @@ scale = Vector2(5.59382, 8.7089)
 texture = ExtResource("18_q5n0l")
 
 [node name="dark_zone2" type="Node2D" parent="."]
+z_index = 1
 
 [node name="dark1" type="Sprite2D" parent="dark_zone2"]
 position = Vector2(-1693.5, -1635.5)
@@ -219,6 +218,7 @@ scale = Vector2(11.7522, 2.18708)
 texture = ExtResource("18_q5n0l")
 
 [node name="dark_zone1" type="Node2D" parent="."]
+z_index = 1
 
 [node name="DarknessEdge2" type="Sprite2D" parent="dark_zone1"]
 position = Vector2(974, -233)
@@ -237,7 +237,6 @@ scale = Vector2(6.98438, 4.53906)
 texture = ExtResource("5_pmmar")
 
 [node name="terrain" type="Node2D" parent="."]
-z_index = -1
 z_as_relative = false
 
 [node name="platform" parent="terrain" instance=ExtResource("2_b0ay7")]
@@ -504,15 +503,79 @@ position = Vector2(2256, -2061)
 texture = ExtResource("14_rwn6v")
 centered = false
 
-[node name="Credits" type="Label" parent="."]
-offset_left = 96.0
-offset_top = 336.0
-offset_right = 468.0
-offset_bottom = 544.0
-text = "Character design / character art  : 
-- Jade Perdrilla
-Environement art:
-- Alice Paut
-Level Design / Programming / Music and Sound :
-- Maëlig Moreau"
-label_settings = SubResource("LabelSettings_3v6vn")
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0352941, 0, 0.168627, 1)
+
+[node name="Lantern1" type="Sprite2D" parent="."]
+position = Vector2(71, 134)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern1" instance=ExtResource("22_fagth")]
+
+[node name="Lantern2" type="Sprite2D" parent="."]
+position = Vector2(2166, 228)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern2" instance=ExtResource("22_fagth")]
+
+[node name="Lantern3" type="Sprite2D" parent="."]
+position = Vector2(516, 1068)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern3" instance=ExtResource("22_fagth")]
+
+[node name="Lantern4" type="Sprite2D" parent="."]
+position = Vector2(2922, -298)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern4" instance=ExtResource("22_fagth")]
+position = Vector2(305, 0)
+scale = Vector2(22.7188, 18.8887)
+
+[node name="Lantern5" type="Sprite2D" parent="."]
+position = Vector2(2623, -2338)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern5" instance=ExtResource("22_fagth")]
+position = Vector2(8, 78.3596)
+scale = Vector2(27.3281, 19.23)
+
+[node name="Lantern6" type="Sprite2D" parent="."]
+position = Vector2(-1802, 402)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern6" instance=ExtResource("22_fagth")]
+
+[node name="Lantern7" type="Sprite2D" parent="."]
+position = Vector2(-533, 1211)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern7" instance=ExtResource("22_fagth")]
+position = Vector2(-7.99997, -116)
+scale = Vector2(25.2669, -13.1406)
+
+[node name="Lantern8" type="Sprite2D" parent="."]
+position = Vector2(2655, 1418)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern8" instance=ExtResource("22_fagth")]
+
+[node name="Lantern9" type="Sprite2D" parent="."]
+position = Vector2(1780, -977)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern9" instance=ExtResource("22_fagth")]
+
+[node name="Lantern10" type="Sprite2D" parent="."]
+position = Vector2(-1290, -1059)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern10" instance=ExtResource("22_fagth")]
+
+[node name="Lantern11" type="Sprite2D" parent="."]
+position = Vector2(-2150, -774)
+texture = ExtResource("21_iwhfc")
+
+[node name="Glow" parent="Lantern11" instance=ExtResource("22_fagth")]
+position = Vector2(-1, 201.781)
+scale = Vector2(19.3287, 25.1943)

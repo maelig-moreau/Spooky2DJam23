@@ -18,6 +18,7 @@ func _process(delta):
 func lightup():
 	$Glow.visible = true
 	is_lit = true
+	$StreetLamp.texture = load("res://images/terrain/street_lamp_lit.png")
 	
 
 func reduce_alpha(value:float):

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cks7rf3b8i1fc"]
+[gd_scene load_steps=4 format=3 uid="uid://cks7rf3b8i1fc"]
 
 [ext_resource type="Texture2D" uid="uid://fbnsjafbln1f" path="res://images/terrain/platform_tile.png" id="1_p3taf"]
+[ext_resource type="Texture2D" uid="uid://priatt0maqr0" path="res://images/terrain/grass1.png" id="2_unwaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_246xh"]
 size = Vector2(289, 92)
@@ -17,3 +18,11 @@ offset_right = 289.0
 offset_bottom = 96.0
 texture = ExtResource("1_p3taf")
 stretch_mode = 1
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(48, -4)
+texture = ExtResource("2_unwaq")
+
+[node name="Grass2" type="Sprite2D" parent="."]
+position = Vector2(188, -4)
+texture = ExtResource("2_unwaq")
