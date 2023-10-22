@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efmly"]
 radius = 27.0
-height = 94.0
+height = 98.0
 
 [sub_resource type="Animation" id="Animation_62g66"]
 resource_name = "wuw"
