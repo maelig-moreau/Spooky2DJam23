@@ -2,7 +2,6 @@ extends CharacterBody2D
 @export var move_speed:int = 600
 @export var jump_speed:int = 50
 @export var gravity:float = 75
-var jump_strength:float = 0
 @export var friction:float = 50
 @export var acceleration:float = 100
 @export var jump_strength_burst:float = 1250
@@ -16,13 +15,17 @@ var close_to_object = null
 var is_carrying:bool = false
 var can_petrify = null
 
-var air_lock:float = 0
-
 var left_input_buffer:bool = false
 var jumps:int = 2
 const MAX_JUMPS = 2
 
 @onready var i_sign = $interact_sign
+@onready var sprite = $sprite
+
+@onready var sfx_petrify = $petrify_sound
+@onready var sfx_run = $run_sound
+@onready var sfx_jump = $jump_sound
+var run_sound_delay:float = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -52,8 +55,19 @@ func _process(delta):
 func _physics_process(delta):
 	var dir = get_input()
 	if dir != Vector2.ZERO:
+		sprite.set_flip_h(dir.x > 0)
+		if ct_remaining > 0:
+			if sprite.animation == "idle":
+				sprite.play("run")
+			if run_sound_delay > 0:
+				run_sound_delay -= delta
+			else:
+				sfx_run.play()
+				run_sound_delay = 0.4	
 		accelerate(dir)
 	else:
+		if sprite.animation == "run":
+			sprite.play("idle")
 		add_friction()
 	jump(dir)
 	move_and_slide()
@@ -90,10 +104,12 @@ func jump(dir):
 		velocity.y = -jump_strength_burst
 		ct_remaining = 0
 		jumps -= 1
+		sfx_jump.play()
 	elif Input.is_action_just_pressed("jump") and is_on_wall_only():
 		velocity.y = -jump_strength_burst
 		velocity.x = -get_which_wall_collided() * move_speed*2
 		ct_remaining = 0
+		sfx_jump.play()
 	else:
 		velocity.y += gravity
 		
@@ -109,6 +125,7 @@ func _input(event):
 			elif is_carrying and can_petrify != null:
 				if can_petrify.happy == false:
 					can_petrify.petrify()
+					sfx_petrify.play()
 					close_to_object.queue_free()
 					is_carrying = false
 			elif is_carrying:

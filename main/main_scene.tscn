@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=22 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
@@ -19,6 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://c1ls3lrgfsn2i" path="res://images/other/stone_potion.png" id="13_wd4sv"]
 [ext_resource type="Texture2D" uid="uid://bc2lw05ivuuih" path="res://images/other/bg.png" id="14_rwn6v"]
 [ext_resource type="Texture2D" uid="uid://bxt37cbp35e2i" path="res://images/SFX/darkness_edge.png" id="18_q5n0l"]
+[ext_resource type="AudioStream" uid="uid://cwyuqsyrd7yle" path="res://Spooky2D Jam23.mp3" id="20_p7lc0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3v6vn"]
+line_spacing = 6.0
+font_size = 18
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="main" type="Node2D"]
 
@@ -53,20 +62,25 @@ position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+[node name="music" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2(-39, -151)
+stream = ExtResource("20_p7lc0")
+autoplay = true
+
 [node name="quest_object1" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(394, -315)
+position = Vector2(361, -315)
 custom_texture = ExtResource("6_d86yf")
 
 [node name="quest_object2" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(3542, -267)
+position = Vector2(2274, -2119)
 custom_texture = ExtResource("5_ywk4s")
 
 [node name="quest_object3" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(-2158, -172)
+position = Vector2(-2184, -173)
 custom_texture = ExtResource("6_ym1af")
 
 [node name="quest_object4" parent="." instance=ExtResource("9_1n1ys")]
-position = Vector2(2302, -2113)
+position = Vector2(3506, -276)
 custom_texture = ExtResource("13_f2iof")
 
 [node name="street_lamp1" parent="." node_paths=PackedStringArray("dark_zone") instance=ExtResource("6_k3alk")]
@@ -108,6 +122,13 @@ is_potion = true
 position = Vector2(2463.5, -1710.5)
 scale = Vector2(14.9883, 7.23047)
 texture = ExtResource("5_pmmar")
+
+[node name="DarknessEdge2" type="Sprite2D" parent="shared_dark_1"]
+position = Vector2(8.81554, 123.008)
+rotation = 1.57079
+scale = Vector2(0.537679, 0.649838)
+skew = -1.00136e-05
+texture = ExtResource("18_q5n0l")
 
 [node name="shared_dark2" type="Sprite2D" parent="."]
 texture_filter = 2
@@ -160,12 +181,6 @@ texture = ExtResource("5_pmmar")
 position = Vector2(475.64, 631.113)
 rotation = 1.57079
 scale = Vector2(5.59382, 8.7089)
-texture = ExtResource("18_q5n0l")
-
-[node name="DarknessEdge2" type="Sprite2D" parent="dark_zone3"]
-position = Vector2(2595.63, -821.096)
-rotation = 1.57079
-scale = Vector2(3.88767, 9.73997)
 texture = ExtResource("18_q5n0l")
 
 [node name="dark_zone2" type="Node2D" parent="."]
@@ -358,7 +373,7 @@ position = Vector2(-487, -740)
 position = Vector2(-1487, 112)
 
 [node name="platform67" parent="terrain" instance=ExtResource("10_ahbep")]
-position = Vector2(-1293, 778)
+position = Vector2(-1299, 790)
 
 [node name="platform26" parent="terrain" instance=ExtResource("10_ahbep")]
 position = Vector2(-1616, -1274)
@@ -488,3 +503,16 @@ position = Vector2(2256, -2061)
 [node name="Bg" type="Sprite2D" parent="ParallaxBackground"]
 texture = ExtResource("14_rwn6v")
 centered = false
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 336.0
+offset_right = 468.0
+offset_bottom = 544.0
+text = "Character design / character art  : 
+- Jade Perdrilla
+Environement art:
+- Alice Paut
+Level Design / Programming / Music and Sound :
+- Maëlig Moreau"
+label_settings = SubResource("LabelSettings_3v6vn")

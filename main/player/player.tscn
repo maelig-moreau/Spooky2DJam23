@@ -1,10 +1,36 @@
-[gd_scene load_steps=13 format=3 uid="uid://d6l8tm053h7e"]
+[gd_scene load_steps=18 format=3 uid="uid://d6l8tm053h7e"]
 
-[ext_resource type="Texture2D" uid="uid://cmo5klah2pbie" path="res://images/player_character/player_placeholder.png" id="1_hs3mo"]
 [ext_resource type="Script" path="res://main/player/player_movement.gd" id="2_130ev"]
+[ext_resource type="Texture2D" uid="uid://cpfeagcc672se" path="res://images/player_character/character_fox_idle_01.png" id="2_jgfeu"]
 [ext_resource type="Texture2D" uid="uid://crby2tseeu0r0" path="res://images/other/firefly.png" id="3_6t85i"]
 [ext_resource type="Texture2D" uid="uid://br5tqmsqh7swf" path="res://images/other/firefly2.png" id="3_27l0o"]
+[ext_resource type="Texture2D" uid="uid://clqp0ka6c4tm7" path="res://images/player_character/character_fox_idle_02.png" id="3_o3lek"]
 [ext_resource type="Texture2D" uid="uid://p48ukt0fr3w4" path="res://images/SFX/glow.png" id="5_e8o6f"]
+[ext_resource type="AudioStream" uid="uid://dlcnse6k2w2nd" path="res://jump.wav" id="6_tb70f"]
+[ext_resource type="AudioStream" uid="uid://dcrw4me35kim4" path="res://steps.wav" id="7_x0nds"]
+[ext_resource type="AudioStream" uid="uid://2m2xnto348h7" path="res://petrify.wav" id="8_pvw83"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjolr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jgfeu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o3lek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jgfeu")
+}],
+"loop": true,
+"name": &"run",
+"speed": 2.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efmly"]
 radius = 27.0
@@ -55,7 +81,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i4ka"]
-size = Vector2(66, 7)
+size = Vector2(66, 8)
 
 [sub_resource type="LabelSettings" id="LabelSettings_juhti"]
 font_size = 20
@@ -66,8 +92,13 @@ shadow_color = Color(0, 0, 0, 0.803922)
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("2_130ev")
 
-[node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_hs3mo")
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_pjolr")
+animation = &"run"
+frame_progress = 0.672275
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 
 [node name="general_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_efmly")
@@ -100,7 +131,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bouncer"]
-position = Vector2(-1, 45.5)
+position = Vector2(-1, 46)
 shape = SubResource("RectangleShape2D_8i4ka")
 
 [node name="interact_sign" type="Label" parent="."]
@@ -110,5 +141,14 @@ offset_right = 95.0
 offset_bottom = -58.0
 text = "Press \"Interact\" key"
 label_settings = SubResource("LabelSettings_juhti")
+
+[node name="jump_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tb70f")
+
+[node name="run_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_x0nds")
+
+[node name="petrify_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pvw83")
 
 [connection signal="body_entered" from="bouncer" to="." method="_on_bouncer_body_entered"]

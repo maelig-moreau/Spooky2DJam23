@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmo5klah2pbie"
-path="res://.godot/imported/player_placeholder.png-531bd82f2b7dc845feae8f5febe0c759.ctex"
+uid="uid://cpfeagcc672se"
+path="res://.godot/imported/character_fox_idle_01.png-76f54e60536af90c51947428f104fe7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/player_character/player_placeholder.png"
-dest_files=["res://.godot/imported/player_placeholder.png-531bd82f2b7dc845feae8f5febe0c759.ctex"]
+source_file="res://images/player_character/character_fox_idle_01.png"
+dest_files=["res://.godot/imported/character_fox_idle_01.png-76f54e60536af90c51947428f104fe7d.ctex"]
 
 [params]
 
