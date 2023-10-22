@@ -27,7 +27,6 @@ const MAX_JUMPS = 2
 @onready var sfx_jump = $jump_sound
 var run_sound_delay:float = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$firefly/fly.play("wuw")
@@ -37,7 +36,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(is_carrying , can_petrify)
 	if close_to_lamp != null and firefly.visible:
 		i_sign.visible = true
 		i_sign.text = "[Action] Dissipate Darkness"
@@ -114,7 +112,7 @@ func jump(dir):
 		velocity.y += gravity
 		
 func _input(event):
-	if event is InputEventKey:
+	if event is InputEventMouse or event is InputEventJoypadButton:
 		if Input.is_action_just_pressed("interact"):
 			if close_to_lamp != null and firefly.visible:
 				close_to_lamp.lightup()

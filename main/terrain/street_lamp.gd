@@ -19,7 +19,7 @@ func lightup():
 	$Glow.visible = true
 	is_lit = true
 	$StreetLamp.texture = load("res://images/terrain/street_lamp_lit.png")
-	
+	$AudioStreamPlayer2D.play()
 
 func reduce_alpha(value:float):
 	var children = dark_zone.get_children()

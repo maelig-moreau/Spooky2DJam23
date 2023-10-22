@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=25 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
+[ext_resource type="Texture2D" uid="uid://dsm5156blgs5e" path="res://images/NPCs/character_owl_idle_02.png" id="3_wjdgv"]
+[ext_resource type="Texture2D" uid="uid://nn5gr7xe3yb2" path="res://images/NPCs/character_owl_idle_01.png" id="4_h7sgd"]
 [ext_resource type="PackedScene" uid="uid://cg80wexc6jmes" path="res://main/terrain/wall4x.tscn" id="4_ijngj"]
 [ext_resource type="Texture2D" uid="uid://dr5uoajvel1b4" path="res://images/SFX/darkness.png" id="5_pmmar"]
 [ext_resource type="Texture2D" uid="uid://dgbdxsxsd3vnf" path="res://images/NPCs/NPC_quests/quest_object2.png" id="5_ywk4s"]
@@ -19,8 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://c1ls3lrgfsn2i" path="res://images/other/stone_potion.png" id="13_wd4sv"]
 [ext_resource type="Texture2D" uid="uid://bc2lw05ivuuih" path="res://images/other/bg.png" id="14_rwn6v"]
 [ext_resource type="Texture2D" uid="uid://bxt37cbp35e2i" path="res://images/SFX/darkness_edge.png" id="18_q5n0l"]
-[ext_resource type="AudioStream" uid="uid://cwyuqsyrd7yle" path="res://Spooky2D Jam23.mp3" id="20_p7lc0"]
-[ext_resource type="Texture2D" uid="uid://dtqxa5k22ae5n" path="res://images/terrain/street_lamp_lit.png" id="21_iwhfc"]
+[ext_resource type="AudioStream" uid="uid://b0d34y7uet68f" path="res://Spooky2D Jam23.mp3" id="20_p7lc0"]
+[ext_resource type="Texture2D" uid="uid://5iyh1j6d4rg8" path="res://images/terrain/lantern.png" id="21_ko57c"]
 [ext_resource type="PackedScene" uid="uid://cicy0ykf78bnq" path="res://images/SFX/glow.tscn" id="22_fagth"]
 
 [node name="main" type="Node2D"]
@@ -29,6 +31,8 @@
 position = Vector2(328, 181)
 seek = NodePath("../quest_object1")
 seek_image = ExtResource("6_d86yf")
+sad_mode = ExtResource("3_wjdgv")
+happy_mode = ExtResource("4_h7sgd")
 
 [node name="NPC2" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
 position = Vector2(1116, -13)
@@ -507,75 +511,103 @@ centered = false
 color = Color(0.0352941, 0, 0.168627, 1)
 
 [node name="Lantern1" type="Sprite2D" parent="."]
-position = Vector2(71, 134)
-texture = ExtResource("21_iwhfc")
+position = Vector2(235, 203)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern1" instance=ExtResource("22_fagth")]
+position = Vector2(-11, 2)
 
 [node name="Lantern2" type="Sprite2D" parent="."]
-position = Vector2(2166, 228)
-texture = ExtResource("21_iwhfc")
+position = Vector2(-1849, 474)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern2" instance=ExtResource("22_fagth")]
+position = Vector2(-11, 2)
+
+[node name="Lantern12" type="Sprite2D" parent="."]
+position = Vector2(-1660, 992)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
+
+[node name="Glow" parent="Lantern12" instance=ExtResource("22_fagth")]
+position = Vector2(-11, 2)
+
+[node name="Glow" parent="." instance=ExtResource("22_fagth")]
+position = Vector2(2097, -176)
+scale = Vector2(23.625, 21.6562)
 
 [node name="Lantern3" type="Sprite2D" parent="."]
-position = Vector2(516, 1068)
-texture = ExtResource("21_iwhfc")
+position = Vector2(499, 1292)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern3" instance=ExtResource("22_fagth")]
 
 [node name="Lantern4" type="Sprite2D" parent="."]
-position = Vector2(2922, -298)
-texture = ExtResource("21_iwhfc")
+position = Vector2(3268, -112)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern4" instance=ExtResource("22_fagth")]
-position = Vector2(305, 0)
-scale = Vector2(22.7188, 18.8887)
+position = Vector2(0, 8.9285)
+scale = Vector2(28.0413, 26.1575)
 
 [node name="Lantern5" type="Sprite2D" parent="."]
-position = Vector2(2623, -2338)
-texture = ExtResource("21_iwhfc")
+position = Vector2(2621, -2265)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern5" instance=ExtResource("22_fagth")]
-position = Vector2(8, 78.3596)
+position = Vector2(-1.78564, 1.78589)
 scale = Vector2(27.3281, 19.23)
 
 [node name="Lantern6" type="Sprite2D" parent="."]
-position = Vector2(-1802, 402)
-texture = ExtResource("21_iwhfc")
+position = Vector2(-2185, -150)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern6" instance=ExtResource("22_fagth")]
 
 [node name="Lantern7" type="Sprite2D" parent="."]
-position = Vector2(-533, 1211)
-texture = ExtResource("21_iwhfc")
+position = Vector2(-239, 881)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern7" instance=ExtResource("22_fagth")]
-position = Vector2(-7.99997, -116)
-scale = Vector2(25.2669, -13.1406)
+position = Vector2(-0.989553, 7.14282)
+scale = Vector2(15.6499, -8.71875)
 
 [node name="Lantern8" type="Sprite2D" parent="."]
-position = Vector2(2655, 1418)
-texture = ExtResource("21_iwhfc")
+position = Vector2(2062, 654)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern8" instance=ExtResource("22_fagth")]
+position = Vector2(2.67862, 16.0714)
+scale = Vector2(39.3136, 13.4487)
 
 [node name="Lantern9" type="Sprite2D" parent="."]
-position = Vector2(1780, -977)
-texture = ExtResource("21_iwhfc")
+position = Vector2(1297, -1657)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern9" instance=ExtResource("22_fagth")]
 
 [node name="Lantern10" type="Sprite2D" parent="."]
-position = Vector2(-1290, -1059)
-texture = ExtResource("21_iwhfc")
+position = Vector2(-1310, -987)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern10" instance=ExtResource("22_fagth")]
+position = Vector2(-3.57129, 5.35718)
 
 [node name="Lantern11" type="Sprite2D" parent="."]
-position = Vector2(-2150, -774)
-texture = ExtResource("21_iwhfc")
+position = Vector2(-1994, -705)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("21_ko57c")
 
 [node name="Glow" parent="Lantern11" instance=ExtResource("22_fagth")]
-position = Vector2(-1, 201.781)
+position = Vector2(1.78589, 12.4999)
 scale = Vector2(19.3287, 25.1943)

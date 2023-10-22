@@ -7,11 +7,15 @@ var has_firefly:bool = true
 var stone_texture = preload("res://images/NPCs/NPC_stone.png")
 var petrified:bool = false
 
+@export var sad_mode:Texture2D
+@export var happy_mode:Texture2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$NpcBubble/seek_texture.texture = seek_image
 	$Glow.visible = false
-	#Quest.advance()
+	if sad_mode != null:
+		$sprite.texture = sad_mode
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +29,8 @@ func _on_area_2d_area_entered(area):
 		area.get_parent().queue_free()
 		player.is_carrying = false
 		happy = true
+		if happy_mode != null:
+			$sprite.texture = happy_mode
 		if player.firefly.visible == false:
 			give_firefly()
 			Quest.score += 100
