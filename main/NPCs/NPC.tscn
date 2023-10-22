@@ -28,8 +28,13 @@ position = Vector2(85, -81)
 texture = ExtResource("2_rsklq")
 
 [node name="seek_texture" type="Sprite2D" parent="NpcBubble"]
-position = Vector2(1, -3)
+position = Vector2(-5, -1)
+scale = Vector2(0.708333, 0.739583)
 texture = ExtResource("3_eon80")
+
+[node name="PointLight2D" type="PointLight2D" parent="NpcBubble"]
+position = Vector2(1, 0)
+texture = ExtResource("2_rsklq")
 
 [node name="Glow" type="PointLight2D" parent="."]
 position = Vector2(-2, -13)

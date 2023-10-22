@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://4gqaqnaxyeq4"]
+[gd_scene load_steps=5 format=3 uid="uid://4gqaqnaxyeq4"]
 
 [ext_resource type="Script" path="res://main/end_screen.gd" id="1_cp8v8"]
 [ext_resource type="Texture2D" uid="uid://bc2lw05ivuuih" path="res://images/other/bg.png" id="2_ghf5p"]
@@ -9,6 +9,14 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.709804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lmvig"]
+line_spacing = 5.0
+font_size = 19
+outline_size = 3
+outline_color = Color(0.443137, 0.443137, 0.443137, 1)
+shadow_size = 4
+shadow_color = Color(0.129412, 0.129412, 0.129412, 0.690196)
 
 [node name="end_screen" type="Control"]
 layout_mode = 3
@@ -44,11 +52,18 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 1.0
+offset_right = 442.0
 grow_vertical = 2
 text = "Character design / character art  : 
 - Jade Perdrilla
+
 Environement art:
 - Alice Paut
-Level Design / Programming / Music and Sound :
-- Maëlig Moreau"
+
+Level Design / Programming /
+Music and Sound :
+- Maëlig Moreau
+
+Occasional help in game design :
+- Orféo Roussel"
+label_settings = SubResource("LabelSettings_lmvig")

@@ -112,24 +112,23 @@ func jump(dir):
 		velocity.y += gravity
 		
 func _input(event):
-	if event is InputEventMouse or event is InputEventJoypadButton:
-		if Input.is_action_just_pressed("interact"):
-			if close_to_lamp != null and firefly.visible:
-				close_to_lamp.lightup()
-				firefly.visible = false
-			elif close_to_object != null and is_carrying == false:
-				close_to_object.is_carried = true
-				is_carrying = true
-			elif is_carrying and can_petrify != null:
-				if can_petrify.happy == false:
-					can_petrify.petrify()
-					sfx_petrify.play()
-					close_to_object.queue_free()
-					is_carrying = false
-			elif is_carrying:
-				close_to_object.is_carried = false
+	if Input.is_action_just_pressed("interact"):
+		if close_to_lamp != null and firefly.visible:
+			close_to_lamp.lightup()
+			firefly.visible = false
+		elif close_to_object != null and is_carrying == false:
+			close_to_object.is_carried = true
+			is_carrying = true
+		elif is_carrying and can_petrify != null:
+			if can_petrify.happy == false:
+				can_petrify.petrify()
+				sfx_petrify.play()
+				close_to_object.queue_free()
 				is_carrying = false
-				close_to_object = null
+		elif is_carrying:
+			close_to_object.is_carried = false
+			is_carrying = false
+			close_to_object = null
 
 func accelerate(direction):
 	var horvel = velocity.move_toward(direction * move_speed,acceleration)

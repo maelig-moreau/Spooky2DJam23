@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://srjuq638qgi2"]
+[gd_scene load_steps=27 format=3 uid="uid://srjuq638qgi2"]
 
 [ext_resource type="PackedScene" uid="uid://ga1wpyj8jelm" path="res://main/terrain/floor8x.tscn" id="2_b0ay7"]
 [ext_resource type="PackedScene" uid="uid://dqnejs3ah46yx" path="res://main/terrain/block.tscn" id="3_sb3xk"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dgbdxsxsd3vnf" path="res://images/NPCs/NPC_quests/quest_object2.png" id="5_ywk4s"]
 [ext_resource type="Texture2D" uid="uid://o10tu11glx77" path="res://images/NPCs/NPC_quests/quest_object1.png" id="6_d86yf"]
 [ext_resource type="PackedScene" uid="uid://beouyewwr8gv3" path="res://main/terrain/street_lamp.tscn" id="6_k3alk"]
+[ext_resource type="Texture2D" uid="uid://cmaj4te54jgul" path="res://images/NPCs/character_deer_idle_02.png" id="6_l1ejs"]
 [ext_resource type="Texture2D" uid="uid://b7uylrtvpbeiq" path="res://images/NPCs/NPC_quests/quest_object3.png" id="6_ym1af"]
+[ext_resource type="Texture2D" uid="uid://dsj21edxp0gix" path="res://images/NPCs/character_deer_idle_01.png" id="7_4euel"]
 [ext_resource type="PackedScene" uid="uid://d2qc8tl7my4k6" path="res://main/NPCs/NPC.tscn" id="7_ftrh6"]
 [ext_resource type="PackedScene" uid="uid://cks7rf3b8i1fc" path="res://main/terrain/floor3x.tscn" id="8_nq8b0"]
 [ext_resource type="PackedScene" uid="uid://bn1pxq64vwik5" path="res://main/player/carrying_object.tscn" id="9_1n1ys"]
@@ -38,6 +40,8 @@ happy_mode = ExtResource("4_h7sgd")
 position = Vector2(1116, -13)
 seek = NodePath("../quest_object2")
 seek_image = ExtResource("5_ywk4s")
+sad_mode = ExtResource("6_l1ejs")
+happy_mode = ExtResource("7_4euel")
 
 [node name="NPC3" parent="." node_paths=PackedStringArray("seek") instance=ExtResource("7_ftrh6")]
 position = Vector2(-1142, -1005)
@@ -132,15 +136,15 @@ texture = ExtResource("18_q5n0l")
 [node name="shared_dark2" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 2
-position = Vector2(-2262, 1162.5)
-scale = Vector2(9.51563, 14.0664)
+position = Vector2(-2258.5, 1162)
+scale = Vector2(9.54297, 14.0703)
 texture = ExtResource("5_pmmar")
 
 [node name="shared_dark4" type="Sprite2D" parent="shared_dark2"]
 z_index = 1
 texture_filter = 2
-position = Vector2(141.346, 46.3161)
-scale = Vector2(0.112479, 0.631769)
+position = Vector2(141.346, 46.1077)
+scale = Vector2(0.112479, 0.633397)
 texture = ExtResource("5_pmmar")
 
 [node name="shared_dark3" type="Sprite2D" parent="."]
@@ -160,13 +164,13 @@ z_index = 1
 [node name="dark1" type="Sprite2D" parent="dark_zone3"]
 texture_filter = 2
 texture_repeat = 2
-position = Vector2(77.5, 1831.5)
-scale = Vector2(7.46484, 9.02734)
+position = Vector2(77.9998, 1827.5)
+scale = Vector2(7.46094, 9.05859)
 texture = ExtResource("5_pmmar")
 
 [node name="DarknessEdge" type="Sprite2D" parent="dark_zone3"]
-position = Vector2(-984.875, 1832)
-scale = Vector2(13.3594, 18.0625)
+position = Vector2(-982, 1828.5)
+scale = Vector2(13.125, 18.1172)
 texture = ExtResource("18_q5n0l")
 
 [node name="dark2" type="Sprite2D" parent="dark_zone3"]
@@ -415,7 +419,7 @@ position = Vector2(2306, 963)
 position = Vector2(3314, 80)
 
 [node name="platform36" parent="terrain" instance=ExtResource("10_ahbep")]
-position = Vector2(3121, -1008)
+position = Vector2(3174, -987)
 
 [node name="platform13" parent="terrain" instance=ExtResource("10_ahbep")]
 position = Vector2(122, -54)
